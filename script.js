@@ -19,7 +19,6 @@ const maxMistakes = 6;
 
 const wordDisplay = document.getElementById("word-display");
 const keyboardDiv = document.getElementById("keyboard");
-const livesCount = document.getElementById("lives-count");
 const statusMessage = document.getElementById("status-message");
 const restartBtn = document.getElementById("restart-btn");
 const figureParts = document.querySelectorAll(".figure-part");
@@ -29,7 +28,6 @@ function initGame() {
   guessedLetters = [];
   statusMessage.innerText = "";
   statusMessage.className = "status-message";
-  livesCount.innerText = maxMistakes;
   restartBtn.classList.add("hidden");
 
   figureParts.forEach((part) => (part.style.display = "none"));
@@ -75,7 +73,6 @@ function handleGuess(letter, btnElement) {
     updateWordDisplay();
   } else {
     mistakes++;
-    livesCount.innerText = maxMistakes - mistakes;
     drawHangman(mistakes);
 
     if (mistakes === maxMistakes) {
@@ -108,3 +105,4 @@ function endGame(isWin) {
 restartBtn.addEventListener("click", initGame);
 
 initGame();
+
